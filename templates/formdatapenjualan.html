@@ -1,0 +1,151 @@
+{% include 'header.html' %}
+<<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Data Transaksi Penjualan</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/formdatapenjualan">Tambah</a></li>
+            <li class="breadcrumb-item active"><a href="/datapenjualan">Data</a></li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Form Transaksi Penjualan</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form" action="/simpanformdatapenjualan" method="POST">
+                  <div class="card-body">
+                    {% for rs in data %}
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" id="id" name="id" value="{{ rs.0 }}" disabled>
+                    </div>
+                    {% endfor %}
+                    <div class="form-group">
+                      <label for="nama">Invoice</label>
+                      <input type="text" class="form-control" id="nomor_invoice" name="nomor_invoice" placeholder="Input Nomor Invoice" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="harga">Tanggal Pembayaran</label>
+                        <input type="text" class="form-control" id="tanggal_pembayaran" name="tanggal_pembayaran" placeholder="Input tanggal" required>
+                    </div>
+                      
+                    <div class="form-group">
+                        <label for="satuan">Status Terakhir</label>
+                        <input type="text" class="form-control" id="status_terakhir" name="status_terakhir" placeholder="Input Status Terakhir" required>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="nama">Nama Produk</label>
+                      <select class="form-control" id="nama_produk" name="nama_produk" placeholder="Input Nama Produk" required>
+                        <option value="">Pilih Produk</option>
+                          {% for rs3 in data3 %}
+                          <option value="{{ rs3.0 }}">{{ rs3.0 }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="nama">Jumlah</label>
+                      <input type="number" class="form-control" id="jumlah_produk_dibeli" name="jumlah_produk_dibeli" placeholder="Input Jumlah" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="harga">Harga</label>
+                        <input type="number" class="form-control" id="harga_jual" name="harga_jual" placeholder="Input Harga" required>
+                    </div>
+                      
+                    <div class="form-group">
+                        <label for="satuan">Nama Pembeli</label>
+                        <input type="text" class="form-control" id="nama_pembeli" name="nama_pembeli" placeholder="Input Nama Pembeli" required>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="nama">No. Telp Pembeli (minimal 11 angka)</label>
+                      <input type="tel" pattern="^\d{12}$" class="form-control" id="no_telp_pembeli" name="no_telp_pembeli" placeholder="Input No Telp Pembeli" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="nama">Nama Penerima</label>
+                      <input type="text" class="form-control" id="nama_penerima" name="nama_penerima" placeholder="Input Nama Penerima" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="harga">No. Telp Penerima (minimal 11 angka)</label>
+                        <input type="tel" pattern="^\d{12}$" class="form-control" id="no_telp_penerima" name="no_telp_penerima" placeholder="Input No Telp penerima" required>
+                    </div>
+                      
+                    <div class="form-group">
+                        <label for="satuan">Alamat Pengiriman</label>
+                        <input type="text" class="form-control" id="alamat_pengiriman" name="alamat_pengiriman" placeholder="Input Alamat Pengiriman" required>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="nama">Provinsi</label>
+                      <select class="form-control" id="provinsi" name="provinsi" placeholder="Input Provinsi" required>
+                        <option value="">Pilih Provinsi</option>
+                          {% for rs1 in data1 %}
+                          <option value="{{ rs1.1 }}">{{ rs1.1 }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="nama">Kota</label>
+                      <input type="text" class="form-control" id="kota" name="kota" placeholder="Input Kota" required>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="nama">Kurir</label>
+                      <select class="form-control" id="nama_kurir" name="nama_kurir" placeholder="Input Nama Kurir" required>
+                        <option value="">Pilih Kurir</option>
+                          {% for rs2 in data2 %}
+                          <option value="{{ rs2.0 }}">{{ rs2.0 }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="nama">Nomor Resi Pengiriman</label>
+                      <input type="text" class="form-control" id="no_resi_kode_booking" name="no_resi_kode_booking" placeholder="Input No Resi" required>
+                    </div>
+                    
+                      
+
+
+                  </div>
+                  <!-- /.card-body -->
+                  
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary" onclick="alert('Berhasil Menambahkan Data Transaksi Penjualan');">Submit</button>
+                  </div>
+                </form>
+              </div>
+              <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </div>
+</section>
+    <!-- /.content -->
+</div>
+  {% include 'footer.html' %}

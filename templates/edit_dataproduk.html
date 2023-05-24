@@ -1,0 +1,71 @@
+{% include 'header.html' %}
+<<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Transaksi Penjualan</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/formmasterbarang">Tambah</a></li>
+            <li class="breadcrumb-item active"><a href="/masterbarang">Data</a></li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Tambah Transaksi</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                {% for rs in data %}
+                <form action="/simpaneditformdataproduk/{{ rs.2 }}" method="POST" enctype="multipart/form-data">   
+                  <div class="card-body">
+                    <div class="form-group">
+                      
+                      <label for="nama">ID</label>
+                      <input type="number" class="form-control" id="id_edit" value="{{ rs.2 }}" name="id_edit"  disabled>
+                    </div>
+
+                  <div class="form-group">
+                    <label for="nama">Nama Produk</label>
+                    <input type="text" class="form-control" id="nama_produk" value="{{ rs.0 }}" name="nama_produk" required >
+                  </div>
+                  <div class="form-group">
+                      <label for="harga">Harga</label>
+                      <input type="number" class="form-control" id="harga" value="{{ rs.1 }}" name="harga" required>
+                  </div>
+                    
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer">
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary" onclick="alert('Berhasil Mengupdate Data Produk');">Submit</button>
+                  </div>
+                </form>
+                
+              </div>
+              <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </div>
+</section>
+    <!-- /.content -->
+</div>
+  {% include 'footer.html' %}

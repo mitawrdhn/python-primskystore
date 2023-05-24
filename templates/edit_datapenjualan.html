@@ -1,0 +1,135 @@
+{% include 'header.html' %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Transaksi Penjualan</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/formdatapenjualan">Tambah</a></li>
+            <li class="breadcrumb-item active"><a href="/datapenjualan">Data</a></li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Tambah Transaksi</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                {% for rs in data %}
+                <form action="/simpaneditformdatapenjualan/{{ rs.15 }}" method="POST" enctype="multipart/form-data">   
+                  <div class="card-body">
+                    <div class="form-group">
+                      
+                      <label for="nama">ID</label>
+                      <input type="number" class="form-control" id="id_edit" value="{{ rs.15 }}" name="id_edit"  disabled>
+                    </div>
+                  <div class="form-group">
+                      <label for="nama">Nomor Invoice</label>
+                      <input type="text" class="form-control" id="nomor_invoice" value="{{ rs.0 }}" name="nomor_invoice" required>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="harga">Tanggal Pembayaran</label>
+                      <input type="text" class="form-control" id="tanggal_pembayaran" value="{{ rs.1 }}" name="tanggal_pembayaran" required>
+                  </div>
+                    
+                  <div class="form-group">
+                      <label for="satuan">Status Terakhir</label>
+                      <input type="text" class="form-control" id="status_terakhir" value="{{ rs.2 }}" name="status_terakhir" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="nama">Nama Produk</label>
+                    <input type="text" class="form-control" id="nama_produk" value="{{ rs.3 }}" name="nama_produk"  required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="nama">Jumlah</label>
+                    <input type="number" class="form-control" id="jumlah_produk_dibeli" value="{{ rs.4 }}" name="jumlah_produk_dibeli"  required>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="harga">Harga</label>
+                      <input type="number" class="form-control" id="harga_jual" value="{{ rs.5 }}" name="harga_jual" required>
+                  </div>
+                    
+                  <div class="form-group">
+                      <label for="satuan">Nama Pembeli</label>
+                      <input type="text" class="form-control" id="nama_pembeli" value="{{ rs.6 }}" name="nama_pembeli" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="nama">No. Telp Pembeli</label>
+                    <input type="number" class="form-control" id="no_telp_pembeli" value="{{ rs.7 }}" name="no_telp_pembeli" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="nama">Nama Penerima</label>
+                    <input type="text" class="form-control" id="nama_penerima" value="{{ rs.8 }}" name="nama_penerima" required>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="harga">No. Telp Penerima</label>
+                      <input type="number" class="form-control" id="no_telp_penerima" value="{{ rs.9 }}" name="no_telp_penerima" required>
+                  </div>
+                    
+                  <div class="form-group">
+                      <label for="satuan">Alamat Pengiriman</label>
+                      <input type="text" class="form-control" id="alamat_pengiriman" value="{{ rs.10 }}" name="alamat_pengiriman" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="nama">Kota</label>
+                    <input type="text" class="form-control" id="kota" value="{{ rs.11 }}" name="kota" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="nama">Provinsi</label>
+                    <input type="text" class="form-control" id="provinsi" value="{{ rs.12 }}" name="provinsi" required>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="harga">Kurir</label>
+                      <input type="text" class="form-control" id="nama_kurir" value="{{ rs.13 }}" name="nama_kurir" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="nama">Kode Booking</label>
+                    <input type="text" class="form-control" id="no_resi_kode_booking" value="{{ rs.14 }}" name="no_resi_kode_booking" disabled>
+                  </div>
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer">
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary" onclick="alert('Berhasil Mengupdate Data Transaksi Penjualan');">Submit</button>
+                  </div>
+                </form>
+                
+              </div>
+              <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </div>
+</section>
+    <!-- /.content -->
+</div>
+  {% include 'footer.html' %}
